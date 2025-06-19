@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 export default function useFetchApi(url, options = {}) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -12,6 +14,7 @@ export default function useFetchApi(url, options = {}) {
         const result = await response.json();
         setData(result);
       } catch (err) {
+        console.log('Error', err);
         setError(err);
       } finally {
         setLoading(false);
@@ -20,7 +23,7 @@ export default function useFetchApi(url, options = {}) {
 
   useEffect(() => {
     fetchData();
-  }, [url, options]);
+  }, []);
 
-  return { data, error, loading };
+  return { data, error, loading, refetch: fetchData  };
 }
