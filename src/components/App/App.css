@@ -57,6 +57,7 @@
   padding: 4px 8px;
   border-radius: 10px;
   border: 1px solid #ccc;
+  width: fit-content;
 }
 
 .btn:hover {

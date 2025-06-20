@@ -6,24 +6,24 @@ export default function useFetchApi(url, options = {}) {
   const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
-      try {
-        const response = await fetch(url, options);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result = await response.json();
-        setData(result);
-      } catch (err) {
-        console.log('Error', err);
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
+    try {
+      setLoading(true);
+      const response = await fetch(url, options);
+      const result = await response.json();
+      console.log('result in fetch:', result);
+      setData(result);
+    } catch (err) {
+      console.log('Error', err);
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     fetchData();
-  }, []);
+    console.log('fetched');
+  }, [url]);
 
-  return { data, error, loading, refetch: fetchData  };
+  return { data, setData, error, loading };
 }

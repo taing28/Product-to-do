@@ -27,15 +27,15 @@ export const ProductDetail = () => {
                     :
                     (
                         <React.Fragment>
-                            <h1>Product id: {product?.data?.id}</h1>
-                            <img src={product?.data?.image} alt={'This is product\'s image'} className="product-image" />
+                            {product?.data?.id && <h1>Product id: {product?.data?.id}</h1>}
+                            {product?.data?.image && <img src={product?.data?.image} alt={'This is product\'s image'} className="product-image" />}
                             <ul style={{ listStyle: 'none' }}>
-                                <li>name: {product?.data?.name}</li>
-                                <li>price: ${product?.data?.price}</li>
-                                <li>description: {product?.data?.description}</li>
-                                <li>product: {product?.data?.product}</li>
-                                <li>color: {product?.data?.color}</li>
-                                <li>createdAt: {product?.data?.createdAt}</li>
+                                {product?.data?.name && <li>name: {product?.data?.name}</li>}
+                                {product?.data?.price && <li>price: ${product?.data?.price}</li>}
+                                {product?.data?.description && <li>description: {product?.data?.description}</li>}
+                                {product?.data?.product && <li>product: {product?.data?.product}</li>}
+                                {product?.data?.color && <li>color: {product?.data?.color}</li>}
+                                {product?.data?.createdAt && <li>createdAt: {product?.data?.createdAt}</li>}
                             </ul>
                         </React.Fragment>
                     )}
